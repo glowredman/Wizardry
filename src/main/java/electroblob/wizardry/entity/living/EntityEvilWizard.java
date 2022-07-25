@@ -444,5 +444,15 @@ public class EntityEvilWizard extends EntityMob implements IRangedAttackMob, IEn
 	public void readSpawnData(ByteBuf data){
 		textureIndex = data.readInt();
 	}
+
+    @Override
+	public boolean getCanSpawnHere(){
+		// Evil wizards can only spawn in the specified dimensions
+		for(int id : Wizardry.evilWizardDimensions){
+			if(this.dimension == id) return super.getCanSpawnHere();
+		}
+
+		return false;
+	}
 	
 }
