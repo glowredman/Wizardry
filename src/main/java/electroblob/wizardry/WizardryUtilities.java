@@ -239,12 +239,15 @@ public final class WizardryUtilities {
 	 * @return
 	 */
 	public static MovingObjectPosition standardEntityRayTrace(World world, EntityLivingBase entity, double range){
-		double dx = entity.getLookVec().xCoord * range;
-		double dy = entity.getLookVec().yCoord * range;
-		double dz = entity.getLookVec().zCoord * range;
-		HashSet hashset = new HashSet(1);
-		hashset.add(entity);
-		return WizardryUtilities.tracePath(world, (float)entity.posX, (float)(entity.posY + entity.getEyeHeight()), (float)entity.posZ, (float)(entity.posX + dx), (float)(entity.posY + entity.getEyeHeight() + dy), (float)(entity.posZ + dz), 1.0f, hashset, false);
+		if (world != null) {
+			double dx = entity.getLookVec().xCoord * range;
+			double dy = entity.getLookVec().yCoord * range;
+			double dz = entity.getLookVec().zCoord * range;
+			HashSet hashset = new HashSet(1);
+			hashset.add(entity);
+			return WizardryUtilities.tracePath(world, (float) entity.posX, (float) (entity.posY + entity.getEyeHeight()), (float) entity.posZ, (float) (entity.posX + dx), (float) (entity.posY + entity.getEyeHeight() + dy), (float) (entity.posZ + dz), 1.0f, hashset, false);
+		}
+		return null;
 	}
 
 	/**
