@@ -349,30 +349,32 @@ public class ClientProxy extends CommonProxy {
 		
 		World world = Minecraft.getMinecraft().theWorld;
 		Entity caster = world.getEntityByID(message.casterID);
-		
-		for(int i=0; i<20; i++){
-			double radius = 1;
-    		double angle = world.rand.nextDouble()*Math.PI*2;
-        	double x = caster.posX + radius*Math.cos(angle);
-        	double y = WizardryUtilities.getEntityFeetPos(caster) + world.rand.nextDouble()*2;
-        	double z = caster.posZ + radius*Math.sin(angle);
-			Minecraft.getMinecraft().effectRenderer.addEffect(new EntitySparkleFX(world, x, y, z, 0, 0.02, 0, 0.6f, 1.0f, 0.6f, 80 + world.rand.nextInt(10)));
-		}
-		for(int i=0; i<20; i++){
-			double radius = 1;
-    		double angle = world.rand.nextDouble()*Math.PI*2;
-        	double x = caster.posX + radius*Math.cos(angle);
-        	double y = WizardryUtilities.getEntityFeetPos(caster) + world.rand.nextDouble()*2;
-        	double z = caster.posZ + radius*Math.sin(angle);
-        	world.spawnParticle("happyVillager", x, y, z, 0, 0.02, 0);
-		}
-		for(int i=0; i<20; i++){
-			double radius = 1;
-    		double angle = world.rand.nextDouble()*Math.PI*2;
-        	double x = caster.posX + radius*Math.cos(angle);
-        	double y = WizardryUtilities.getEntityFeetPos(caster) + world.rand.nextDouble()*2;
-        	double z = caster.posZ + radius*Math.sin(angle);
-        	world.spawnParticle("enchantmenttable", x, y, z, 0, 0.02, 0);
+
+		if (caster != null) {
+			for (int i = 0; i < 20; i++) {
+				double radius = 1;
+				double angle = world.rand.nextDouble() * Math.PI * 2;
+				double x = caster.posX + radius * Math.cos(angle);
+				double y = WizardryUtilities.getEntityFeetPos(caster) + world.rand.nextDouble() * 2;
+				double z = caster.posZ + radius * Math.sin(angle);
+				Minecraft.getMinecraft().effectRenderer.addEffect(new EntitySparkleFX(world, x, y, z, 0, 0.02, 0, 0.6f, 1.0f, 0.6f, 80 + world.rand.nextInt(10)));
+			}
+			for (int i = 0; i < 20; i++) {
+				double radius = 1;
+				double angle = world.rand.nextDouble() * Math.PI * 2;
+				double x = caster.posX + radius * Math.cos(angle);
+				double y = WizardryUtilities.getEntityFeetPos(caster) + world.rand.nextDouble() * 2;
+				double z = caster.posZ + radius * Math.sin(angle);
+				world.spawnParticle("happyVillager", x, y, z, 0, 0.02, 0);
+			}
+			for (int i = 0; i < 20; i++) {
+				double radius = 1;
+				double angle = world.rand.nextDouble() * Math.PI * 2;
+				double x = caster.posX + radius * Math.cos(angle);
+				double y = WizardryUtilities.getEntityFeetPos(caster) + world.rand.nextDouble() * 2;
+				double z = caster.posZ + radius * Math.sin(angle);
+				world.spawnParticle("enchantmenttable", x, y, z, 0, 0.02, 0);
+			}
 		}
 	}
 	
