@@ -217,13 +217,14 @@ public class WizardryClientEventHandler {
 			GL11.glPopMatrix();
 		}
 		*/
-		
 		Minecraft mc = Minecraft.getMinecraft();
+		if (mc.theWorld == null) return;
+
 		ExtendedPlayer properties = ExtendedPlayer.get(mc.thePlayer);
 		MovingObjectPosition rayTrace = WizardryUtilities.standardEntityRayTrace(mc.theWorld, mc.thePlayer, 16);
 		
 		// Target selection pointer
-		if(mc.thePlayer.isSneaking() && mc.thePlayer.getHeldItem() != null
+		if(mc.thePlayer != null && mc.thePlayer.isSneaking() && mc.thePlayer.getHeldItem() != null
 				&& mc.thePlayer.getHeldItem().getItem() instanceof ItemWand && rayTrace != null
 				&& rayTrace.entityHit instanceof EntityLivingBase && rayTrace.entityHit == event.entity
 				&& properties != null && properties.selectedMinion != null){
@@ -306,7 +307,7 @@ public class WizardryClientEventHandler {
 		}
 		
 		// Sixth sense
-		if(mc.thePlayer.isPotionActive(Wizardry.sixthSense) && event.entity != mc.thePlayer
+		if(mc.thePlayer != null && mc.thePlayer.isPotionActive(Wizardry.sixthSense) && event.entity != mc.thePlayer
 				&& mc.thePlayer.getActivePotionEffect(Wizardry.sixthSense) != null
 				&& event.entity.getDistanceToEntity(mc.thePlayer) < 20*(1+mc.thePlayer.getActivePotionEffect(Wizardry.sixthSense).getAmplifier()*Wizardry.RANGE_INCREASE_PER_LEVEL)){
 

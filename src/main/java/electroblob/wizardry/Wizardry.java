@@ -180,7 +180,12 @@ public class Wizardry {
 	public static int[] flowerDimensions = {0};
 	/** List of dimension ids in which to generate crystal ore. */
 	public static int[] towerDimensions = {0};
+	/** List of dimension ids in which evil wizards can spawn. */
+	public static int[] evilWizardDimensions = {0};
 	/** Chance (out of 200) for mobs to drop spell books. */
+
+	/**Should flowers generate on bonemeal */
+	public static boolean bonemealMagicalFlower = true;
 	public static int spellBookDropChance = 3;
 	/** Whether or not wizardry loot should generate in dungeon chests. */
 	public static boolean generateLoot = true;
@@ -753,6 +758,18 @@ public class Wizardry {
 		property.setLanguageKey("config.tower_dimensions");
 		property.setRequiresWorldRestart(true);
 		towerDimensions = property.getIntList();
+		propOrder.add(property.getName());
+
+		property = config.get(config.CATEGORY_GENERAL, "evilWizardDimensions", evilWizardDimensions, "List of dimension ids in which evil wizards can spawn.");
+		property.setLanguageKey("config.evil_Wizard_Dimensions");
+		property.setRequiresWorldRestart(true);
+		evilWizardDimensions = property.getIntList();
+		propOrder.add(property.getName());
+
+		property = config.get(config.CATEGORY_GENERAL, "bonemealMagicalFlower", true, "Whether Magical Flowers spawn with bonemeal.");
+		property.setLanguageKey("config.bonemealMagicalFlower");
+		property.setRequiresWorldRestart(true);
+		bonemealMagicalFlower = property.getBoolean();
 		propOrder.add(property.getName());
 
 		property = config.get(config.CATEGORY_GENERAL, "generateLoot", true, "Whether to generate wizardry loot in dungeon chests.");
