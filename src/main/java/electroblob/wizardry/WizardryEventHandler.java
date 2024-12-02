@@ -2,6 +2,7 @@ package electroblob.wizardry;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -154,7 +155,7 @@ public class WizardryEventHandler {
 			return;
 		}
 
-		if(event.source != null && event.source.getEntity() instanceof EntityLivingBase){
+		if(event.source != null && !Objects.equals(event.source.damageType, MagicDamage.REFLECTIVE_MAGIC_DAMAGE) && event.source.getEntity() instanceof EntityLivingBase){
 
 			// Cancels the mind trick effect if the creature takes damage
 			// This has been moved to within the (event.source.getEntity() instanceof EntityLivingBase) check so it doesn't
@@ -193,7 +194,7 @@ public class WizardryEventHandler {
 					}
 				}
 
-				attacker.attackEntityFrom(MagicDamage.causeDirectMagicDamage(event.entityLiving, DamageType.SHOCK), 4.0f);
+				attacker.attackEntityFrom(MagicDamage.causeReflectiveMagicDamage(event.entityLiving, DamageType.SHOCK), 4.0f);
 				world.playSoundAtEntity(attacker, "wizardry:arc", 1.0F, world.rand.nextFloat() * 0.4F + 1.5F);
 			}
 

@@ -620,6 +620,7 @@ key.previous_spell=Previous Spell
 
 death.attack.wizardryMagic=%1$s was killed by %2$s using magic
 death.attack.indirectWizardryMagic=%1$s was killed by %2$s using magic
+death.attack.reflectiveWizardryMagic=%1$s was killed by %2$s using magic
 
 commands.cast.usage=/%1$s <spell> [player] [damage multiplier] [range multiplier] [duration multiplier] [blast multiplier]
 commands.cast.success=Successfully cast %1$s

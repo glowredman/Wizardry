@@ -67,6 +67,9 @@ public class MagicDamage extends EntityDamageSource implements IElementalDamage 
 	 * references get changed automatically. */
 	public static final String INDIRECT_MAGIC_DAMAGE = "indirectWizardryMagic";
 	// Technically, I don't need to specify that the classes in this map must extend entity, but it's good practice to.
+
+	public static final String REFLECTIVE_MAGIC_DAMAGE = "reflectiveWizardryMagic";
+
 	private static final Map<Class<? extends Entity>, DamageType[]> immunityMapping = new HashMap<Class<? extends Entity>, DamageType[]>();
 	
 	private final DamageType type;
@@ -206,6 +209,11 @@ public class MagicDamage extends EntityDamageSource implements IElementalDamage 
 	public static DamageSource causeIndirectEntityMagicDamage(Entity magic, EntityLivingBase caster, DamageType type)
 	{
 		return new IndirectMagicDamage(INDIRECT_MAGIC_DAMAGE, magic, caster, type);
+	}
+
+	public static DamageSource causeReflectiveMagicDamage(EntityLivingBase caster, DamageType type)
+	{
+		return new MagicDamage(REFLECTIVE_MAGIC_DAMAGE, caster, type);
 	}
 
 	@Override
